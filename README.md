@@ -1,4 +1,4 @@
-# API de Frases Motivadoras ✏️ 
+# - API de Frases Motivadoras - ✏️ 
 
 Una API sencilla construida con FastAPI que devuelve frases motivadoras.
 Proyecto de aprendizaje para practicar el desarrollo de APIs en Python.
