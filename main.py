@@ -1,16 +1,11 @@
 from fastapi import FastAPI, HTTPException
-from dotenv import load_dotenv
 import random
-import os
-
-load_dotenv()
 
 app = FastAPI(
-    title=os.getenv("APP_NAME"),
-    version=os.getenv("APP_VERSION"),
+    title="Frases API",
+    version="1.0.0",
 )
 
-# "base de datos" (lista de memoria)
 frases = [
     {"id": 1, "frase": "Cree en ti, incluso cuando nadie más lo haga"},
     {"id": 2, "frase": "Cada paso cuenta, por pequeño que sea"},
@@ -64,28 +59,24 @@ frases = [
     {"id": 50, "frase": "Tú tienes el control de tu destino"}
 ]
 
-# Ver todas las frases
 @app.get("/frases")
 def get_phrase():
     return frases
 
-# Obtener una frase aleatoria
-@app.get ("/frases/aleatoria")
+@app.get("/frases/aleatoria")
 def phrase_random():
     return random.choice(frases)
 
-# Añadir una frase nueva
 @app.post("/frases")
 def create_phrase(nueva_frase: dict):
     nueva_frase["id"] = len(frases) + 1
     frases.append(nueva_frase)
     return {"mensaje": "Frase añadida", "frase": nueva_frase}
 
-# Eliminar una frase
 @app.delete("/frases/{id}")
-def delete_phrase():
+def delete_phrase(id: int):
     for frase in frases:
         if frase["id"] == id:
             frases.remove(frase)
-            return {"mensaje": "Frase elimminada"}
-        raise HTTPException(status_code=404, detail="Frase no encontrada")
+            return {"mensaje": "Frase eliminada"}
+    raise HTTPException(status_code=404, detail="Frase no encontrada")
