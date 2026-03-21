@@ -1,9 +1,17 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 import random
 
 app = FastAPI(
     title="Frases API",
     version="1.0.0",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 frases = [
@@ -56,7 +64,7 @@ frases = [
     {"id": 47, "frase": "El éxito empieza con un paso"},
     {"id": 48, "frase": "Nunca subestimes tu potencial"},
     {"id": 49, "frase": "La clave es no rendirse"},
-    {"id": 50, "frase": "Tú tienes el control de tu destino"}
+    {"id": 50, "frase": "Tú tienes el control de tu destino"},
 ]
 
 @app.get("/frases")
