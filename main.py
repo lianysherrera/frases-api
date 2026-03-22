@@ -67,21 +67,21 @@ frases = [
     {"id": 50, "frase": "Tú tienes el control de tu destino"},
 ]
 
-@app.get("/frases")
+@app.get("/frases", tags=["frases"], summary="Obtener todas las frases", description="Devuelve la lista completa de frases motivadoras.")
 def get_phrase():
     return frases
 
-@app.get("/frases/aleatoria")
+@app.get("/frases/aleatoria", tags=["frases"], summary="Frase aleatoria", description="Devuelve una frase motivadora al azar")
 def phrase_random():
     return random.choice(frases)
 
-@app.post("/frases")
+@app.post("/frases", frases["frases"], summary="Añadir frase", description="Añade una nueva frase a la lista.")
 def create_phrase(nueva_frase: dict):
     nueva_frase["id"] = len(frases) + 1
     frases.append(nueva_frase)
     return {"mensaje": "Frase añadida", "frase": nueva_frase}
 
-@app.delete("/frases/{id}")
+@app.delete("/frases/{id}", tags=["frases"], summary="Eliminar frase", description="Elimina una frase por su ID. Devuelve 404 si no existe.")
 def delete_phrase(id: int):
     for frase in frases:
         if frase["id"] == id:
