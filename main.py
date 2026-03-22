@@ -75,7 +75,7 @@ def get_phrase():
 def phrase_random():
     return random.choice(frases)
 
-@app.post("/frases", frases["frases"], summary="Añadir frase", description="Añade una nueva frase a la lista.")
+@app.post("/frases", tags=["frases"], summary="Añadir frase", description="Añade una nueva frase a la lista.")
 def create_phrase(nueva_frase: dict):
     nueva_frase["id"] = len(frases) + 1
     frases.append(nueva_frase)
