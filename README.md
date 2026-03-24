@@ -35,8 +35,6 @@ cp .env.example .env
 
 uvicorn main:app --reload
 
-Abre en el navegador: http://localhost:8000/docs
-
 ## Endpoints
 
 | Método | Ruta | Descripción |
@@ -48,4 +46,4 @@ Abre en el navegador: http://localhost:8000/docs
 
 ## Autora
 
-Lily — proyecto de aprendizaje personal
+Lily Herrera — proyecto de aprendizaje personal
