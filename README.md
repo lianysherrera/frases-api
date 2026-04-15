@@ -1,4 +1,4 @@
-# - API de Frases Motivadoras - ✏️ 
+# - API de Frases Motivadoras -
 
 Una API sencilla construida con FastAPI que devuelve frases motivadoras.
 Proyecto de aprendizaje para practicar el desarrollo de APIs en Python.
@@ -44,6 +44,4 @@ uvicorn main:app --reload
 | POST | /frases | Añadir una frase nueva |
 | DELETE | /frases/{id} | Eliminar una frase |
 
-## Autora
-
-Lily Herrera — proyecto de aprendizaje personal
+- Proyecto de aprendizaje personal
